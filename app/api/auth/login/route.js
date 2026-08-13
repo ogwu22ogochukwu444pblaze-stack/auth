@@ -41,7 +41,7 @@ export async function POST(req) {
 
     // Get IP and geolocation
     const ipAddress = getIpFromRequest(req);
-    const geoLocation = await getIpGeoLocation(ipAddress);
+    const geoLocation = await getIpGeoLocation(req, ipAddress);
     const normalizedFingerprint = normalizeDeviceFingerprint(deviceFingerprint);
 
     // Check for existing device

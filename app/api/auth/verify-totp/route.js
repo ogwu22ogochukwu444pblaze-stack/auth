@@ -41,7 +41,7 @@ export async function POST(req) {
 
     // Get or create device
     const ipAddress = getIpFromRequest(req);
-    const geoLocation = await getIpGeoLocation(ipAddress);
+    const geoLocation = await getIpGeoLocation(req, ipAddress);
     const normalizedFingerprint = normalizeDeviceFingerprint(deviceFingerprint);
 
     let device = await prisma.device.findUnique({
