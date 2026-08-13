@@ -78,10 +78,15 @@ export async function POST(req) {
         },
       });
     } else {
-      // Update last seen
+      // Update last seen and refresh location data
       await prisma.device.update({
         where: { id: device.id },
-        data: { lastSeen: new Date() },
+        data: {
+          lastSeen: new Date(),
+          city: geoLocation.city,
+          country: geoLocation.country,
+          ipAddress,
+        },
       });
     }
 
